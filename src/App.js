@@ -10,7 +10,6 @@ export default function App() {
   return (
     <>
       <Header />
-      {/* <HomePage /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movie/:id" element={<Details />} />

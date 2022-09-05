@@ -24,7 +24,7 @@ export default function Details() {
   }, [id, dispatch]);
 
   return (
-    <div className="container content">
+    <div className="container content animation">
       {currentMovie && (
         <div className="details_movie">
           <div className="card details">

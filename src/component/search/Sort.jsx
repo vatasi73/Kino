@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Select from "react-select";
@@ -36,7 +36,7 @@ export default function Sort() {
         placeholder="Выбрать жанр"
         isClearable
         isSearchable={false}
-        value={optionsMap[sort]}
+        value={optionsMap[sort] || ""}
         onChange={handleSelect}
       />
     </>

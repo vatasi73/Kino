@@ -35,7 +35,7 @@ export default function Top250MovieList() {
       {status === "loading" ? (
         <Loading />
       ) : (
-        <div className="top250content">
+        <div className="animation">
           <Pagination />
           <div className="items">
             {status === "received" && (

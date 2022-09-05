@@ -1,3 +1,4 @@
+import { SET_CLEAR } from "../search/searchAction";
 import {
   SET_MOVIES,
   SET_CURRENT_PAGE,
@@ -35,9 +36,14 @@ export const top250MovieReducer = (state = initialState, { type, payload }) => {
     case SET_CURRENT_PAGE:
       return {
         ...state,
-
         currentPage: payload,
       };
+    case SET_CLEAR:
+      return {
+        ...state,
+        currentPage: 1,
+      };
+
     default:
       return state;
   }

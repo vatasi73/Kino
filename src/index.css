@@ -104,7 +104,7 @@ span {
   margin-top: 2rem;
 }
 
-.top250content {
+.animation {
   opacity: 0;
   animation: ani 2.5s forwards;
 }
