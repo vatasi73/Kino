@@ -14,6 +14,8 @@ import {
 } from "../store/top250Movie/top250MovieSelector";
 import Loading from "./Loading";
 import Pagination from "../component/search/Pagination";
+import ErrorMsg from "./ErrorMsg";
+
 export default function Top250MovieList() {
   const dispatch = useDispatch();
 
@@ -31,23 +33,35 @@ export default function Top250MovieList() {
 
   return (
     <>
-      {error && <h2>Данные с сервера не получены...</h2>}
-      {status === "loading" ? (
-        <Loading />
+      {error ? (
+        <ErrorMsg />
       ) : (
-        <div className="animation">
-          <Pagination />
-          <div className="items">
-            {status === "received" && (
-              <>
-                {movies.map((item) => (
-                  <Top250MovieItems key={item.filmId} {...item} />
-                ))}
-              </>
-            )}
-          </div>
-          <Pagination />
-        </div>
+        <>
+          {status === "loading" ? (
+            <Loading />
+          ) : (
+            <div className="animation">
+              {!movies.length ? (
+                <h4 className="nothing_found">Ничего не найдено..</h4>
+              ) : (
+                <>
+                  {" "}
+                  <Pagination />
+                  <div className="items">
+                    {status === "received" && (
+                      <>
+                        {movies.map((item) => (
+                          <Top250MovieItems key={item.filmId} {...item} />
+                        ))}
+                      </>
+                    )}
+                  </div>
+                  <Pagination />
+                </>
+              )}
+            </div>
+          )}
+        </>
       )}
     </>
   );

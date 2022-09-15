@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage } from "../../store/top250Movie/top250MovieAction";
 import { selectCurrentPage } from "../../store/top250Movie/top250MovieSelector";

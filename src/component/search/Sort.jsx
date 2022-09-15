@@ -7,7 +7,7 @@ import { selectSort } from "../../store/search/searchSelector";
 
 export default function Sort() {
   const optionsMap = {
-    drama: {
+    драма: {
       value: "драма",
       label: "драма",
     },
@@ -19,7 +19,28 @@ export default function Sort() {
       value: "приключения",
       label: "приключения",
     },
+    боевик: {
+      value: "боевик",
+      label: "боевик",
+    },
+    детектив: {
+      value: "детектив",
+      label: "детектив",
+    },
+    триллер: {
+      value: "триллер",
+      label: "триллер",
+    },
+    фэнтези: {
+      value: "фэнтези",
+      label: "фэнтези",
+    },
+    фантастика: {
+      value: "фантастика",
+      label: "фантастика",
+    },
   };
+
   const options = Object.values(optionsMap);
   const dispatch = useDispatch();
   const sort = useSelector(selectSort);

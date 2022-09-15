@@ -1,4 +1,5 @@
 import React from "react";
+import Favorites from "./Favorites";
 
 import Search from "../component/search/Search";
 import Sort from "../component/search/Sort";
@@ -9,6 +10,7 @@ export default function HomePage() {
   return (
     <div className="container content">
       <div className="serch_content">
+        <Favorites />
         <Search />
         <Sort />
       </div>

@@ -5,7 +5,7 @@ import { setClear } from "../store/search/searchAction";
 
 export default function Header() {
   const dispatch = useDispatch();
-  const cleanUP = () => dispatch(setClear(null));
+  const cleanUP = () => dispatch(setClear());
   return (
     <>
       <nav>

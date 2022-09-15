@@ -1,10 +1,14 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
+import FavoritesAddToggle from "./FavoritesAddToggle";
+
 export default function Top250MovieItems(item) {
   const { nameRu, year, rating, posterUrlPreview, genres, filmId } = item;
 
   return (
     <div className="card">
+      <FavoritesAddToggle {...item} key={item.filmId} />
       <div className="card-image">
         <img src={posterUrlPreview} alt={nameRu} />
         <span className="card-title white-text green ">{rating}</span>

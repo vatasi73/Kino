@@ -28,6 +28,10 @@ export const loadTop250Movie =
           "X-API-KEY": api.API_KEY,
         },
       })
-      .then(({ data }) => dispatch(settop250Movie(data.films)))
+      .then(({ data }) =>
+        dispatch(
+          settop250Movie(data.films.map((_) => ({ ..._, status: false })))
+        )
+      )
       .catch((err) => dispatch(setError(err.message)));
   };

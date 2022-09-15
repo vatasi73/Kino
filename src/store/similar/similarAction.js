@@ -1,3 +1,5 @@
+import { setError } from "../top250Movie/top250MovieAction";
+
 export const SET_SIMILAR = "@@similar/SET_SIMILAR";
 
 const setSimilarMovie = (movie) => ({
@@ -14,5 +16,6 @@ export const loadSimilarMovie =
           "X-API-KEY": api.API_KEY,
         },
       })
-      .then(({ data }) => dispatch(setSimilarMovie(data.items.slice(0, 6))));
+      .then(({ data }) => dispatch(setSimilarMovie(data.items.slice(0, 6))))
+      .catch((err) => dispatch(setError(err.message)));
   };

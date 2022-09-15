@@ -1,3 +1,5 @@
+import { setError } from "../top250Movie/top250MovieAction";
+
 export const SET_MOVIE_BY_ID = `@@details/SET_MOVIE_BY_ID`;
 
 const setMovieByid = (movie) => ({
@@ -14,5 +16,6 @@ export const loadMovieById =
           "X-API-KEY": api.API_KEY,
         },
       })
-      .then(({ data }) => dispatch(setMovieByid(data)));
+      .then(({ data }) => dispatch(setMovieByid(data)))
+      .catch((err) => dispatch(setError(err.message)));
   };

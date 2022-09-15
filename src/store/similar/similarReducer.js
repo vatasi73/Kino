@@ -1,3 +1,4 @@
+import { SET_ERROR } from "../top250Movie/top250MovieAction";
 import { SET_SIMILAR } from "./similarAction";
 
 const initialState = {
@@ -9,6 +10,12 @@ export const similarMovieReducer = (
   { type, payload }
 ) => {
   switch (type) {
+    case SET_ERROR:
+      return {
+        ...state,
+        status: "rejected",
+        error: payload,
+      };
     case SET_SIMILAR:
       return {
         ...state,
