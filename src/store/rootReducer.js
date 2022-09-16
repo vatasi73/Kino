@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { detailsMovieReducer } from "./details/detailsReducer";
-import { addFavouritesReducer } from "./favourites/favouritesReducer";
+
 import { searchReducer } from "./search/searchReducer";
 import { similarMovieReducer } from "./similar/similarReducer";
 
@@ -10,5 +10,4 @@ export const rootReducer = combineReducers({
   search: searchReducer,
   movieDetails: detailsMovieReducer,
   similarMovie: similarMovieReducer,
-  addFavourites: addFavouritesReducer,
 });

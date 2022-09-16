@@ -2,7 +2,6 @@ export const selectMovieInfo = (state) => ({
   status: state.top250Movie.status,
   error: state.top250Movie.error,
 });
-
 export const selectTop250Movie = (state) => state.top250Movie.list;
 
 export const selectVisibleItems = (state, { search = "", sort = "" }) => {
@@ -15,3 +14,5 @@ export const selectVisibleItems = (state, { search = "", sort = "" }) => {
 };
 
 export const selectCurrentPage = (state) => state.top250Movie.currentPage;
+
+export const selectAddFavorites = (state) => state.top250Movie.favorites;

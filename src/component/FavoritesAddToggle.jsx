@@ -1,27 +1,22 @@
 import React from "react";
 
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setAddFavorites,
-  setRemoveFromFavorites,
-} from "../store/favourites/favouritesAction";
-import { selectFavoritesInfo } from "../store/favourites/favouritesSelector";
+import { useDispatch } from "react-redux";
+import { setAddFavorites } from "../store/top250Movie/top250MovieAction";
+
 export default function FavoritesAddToggle(item) {
   const dispatch = useDispatch();
 
-  const status = useSelector(selectFavoritesInfo);
-
   return (
     <div>
-      <button
+      <i
         onClick={() => {
-          !status
-            ? dispatch(setAddFavorites(item))
-            : dispatch(setRemoveFromFavorites(item));
+          dispatch(setAddFavorites(item));
         }}
+        style={{ color: !item.status ? "" : "yellow" }}
+        className="medium material-icons favorites"
       >
-        favourites
-      </button>
+        turned_in_not
+      </i>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import {
   SET_CURRENT_PAGE,
   SET_ERROR,
   SET_LOADING,
+  SET_ADD_FAVORITES,
 } from "./top250MovieAction";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   error: null,
   list: [],
   currentPage: 1,
+  favorites: [],
 };
 
 export const top250MovieReducer = (state = initialState, { type, payload }) => {
@@ -43,7 +45,24 @@ export const top250MovieReducer = (state = initialState, { type, payload }) => {
         ...state,
         currentPage: 1,
       };
+    case SET_ADD_FAVORITES:
+      let list = JSON.parse(JSON.stringify(state.list)).map((film) =>
+        film.filmId === payload.filmId
+          ? { ...film, status: !film.status }
+          : { ...film }
+      );
 
+      let film = state.favorites.find((e) => e.filmId === payload.filmId);
+
+      let favorites = film
+        ? state.favorites.filter((e) => e.filmId !== film.filmId)
+        : [...state.favorites, payload];
+
+      return {
+        ...state,
+        list,
+        favorites,
+      };
     default:
       return state;
   }

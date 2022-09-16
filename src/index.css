@@ -142,3 +142,18 @@ span {
   align-items: center;
   margin-top: 1rem;
 }
+.favorites {
+  position: absolute;
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
+  right: 15px;
+  top: 15px;
+  z-index: 2;
+  cursor: pointer;
+  transition: color 500ms ease;
+  background: none;
+}
+.favorites:hover {
+  opacity: 0.8;
+}

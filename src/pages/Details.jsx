@@ -10,7 +10,8 @@ import { selectCurrentMovie } from "../store/details/details.Selector";
 import { loadMovieById } from "../store/details/detailsAction";
 import { loadSimilarMovie } from "../store/similar/similarAction";
 import { selectSimilarMovie } from "../store/similar/similarSelector";
-export default function Details() {
+
+export default function Details(item) {
   const { id } = useParams();
   const dispatch = useDispatch();
 
