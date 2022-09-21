@@ -1,0 +1,27 @@
+import { createSlice } from "@reduxjs/toolkit";
+const initialState = {
+  search: "",
+  sort: "",
+};
+const controlsSlice = createSlice({
+  name: "@@controls",
+  initialState,
+  reducers: {
+    setSearch: (state, action) => {
+      state.search = action.payload;
+    },
+    setSort: (state, action) => {
+      state.sort = action.payload;
+    },
+    setClear: () => initialState,
+  },
+});
+
+export const { setSearch, setSort, setClear } = controlsSlice.actions;
+export const controlsReducer = controlsSlice.reducer;
+
+export const selectSearch = (state) => state.controls.search;
+
+export const selectSort = (state) => state.controls.sort;
+
+export const selectControls = (state) => state.controls;

@@ -1,9 +1,7 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-
 import Select from "react-select";
-import { setSort } from "../../store/search/searchAction";
-import { selectSort } from "../../store/search/searchSelector";
+
+import { useSort } from "./use-sort";
 
 export default function Sort() {
   const optionsMap = {
@@ -42,12 +40,8 @@ export default function Sort() {
   };
 
   const options = Object.values(optionsMap);
-  const dispatch = useDispatch();
-  const sort = useSelector(selectSort);
 
-  const handleSelect = (genre) => {
-    dispatch(setSort(genre?.value || ""));
-  };
+  const [sort, handleSort] = useSort();
 
   return (
     <>
@@ -58,7 +52,7 @@ export default function Sort() {
         isClearable
         isSearchable={false}
         value={optionsMap[sort] || ""}
-        onChange={handleSelect}
+        onChange={handleSort}
       />
     </>
   );

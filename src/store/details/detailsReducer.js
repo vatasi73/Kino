@@ -10,12 +10,12 @@ export const detailsMovieReducer = (
   { type, payload }
 ) => {
   switch (type) {
-    case SET_ERROR:
-      return {
-        ...state,
-        status: "rejected",
-        error: payload,
-      };
+    // case SET_ERROR:
+    //   return {
+    //     ...state,
+    //     status: "rejected",
+    //     error: payload,
+    //   };
     case SET_MOVIE_BY_ID:
       return {
         ...state,

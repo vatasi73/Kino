@@ -1,8 +1,8 @@
 import React from "react";
-import Search from "../component/search/Search";
-import Sort from "../component/search/Sort";
+import Search from "../component/features/controls/Search";
+import Sort from "../component/features/controls/Sort";
 
-import Top250MovieList from "../component/Top250MovieList";
+import Top250MovieList from "../component/features/top250movie/Top250MovieList";
 
 export default function HomePage() {
   return (

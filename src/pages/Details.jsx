@@ -2,16 +2,19 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { useParams } from "react-router-dom";
 
-import SimilarMovie from "../component/SimilarMovie";
+import SimilarMovie from "../component/features/details/similar/SimilarMovie";
 import ErrorMsg from "../component/ErrorMsg";
 
 import { selectMovieInfo } from "../store/top250Movie/top250MovieSelector";
-import { selectCurrentMovie } from "../store/details/details.Selector";
-import { loadMovieById } from "../store/details/detailsAction";
+import {
+  selectCurrentMovie,
+  setMovieById,
+} from "../component/features/details/details-slice";
+
 import { loadSimilarMovie } from "../store/similar/similarAction";
 import { selectSimilarMovie } from "../store/similar/similarSelector";
 
-export default function Details(item) {
+export default function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -23,7 +26,7 @@ export default function Details(item) {
   }, [id, dispatch]);
 
   useEffect(() => {
-    dispatch(loadMovieById(id));
+    dispatch(setMovieById(id));
   }, [id, dispatch]);
 
   return (

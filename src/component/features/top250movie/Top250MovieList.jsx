@@ -1,35 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-
-import React, { useEffect } from "react";
-
-import { loadTop250Movie } from "../store/top250Movie/top250MovieAction";
-
+import Loading from "../../Loading";
+import Pagination from "./Pagination";
+import ErrorMsg from "../../ErrorMsg";
 import Top250MovieItems from "./Top250MovieItems";
-
-import { selectSC } from "../store/search/searchSelector";
-import {
-  selectCurrentPage,
-  selectMovieInfo,
-  selectVisibleItems,
-} from "../store/top250Movie/top250MovieSelector";
-import Loading from "./Loading";
-import Pagination from "../component/search/Pagination";
-import ErrorMsg from "./ErrorMsg";
+import { useTop250Movies } from "./use-top250movie";
 
 export default function Top250MovieList() {
-  const dispatch = useDispatch();
-
-  const { status, error } = useSelector(selectMovieInfo);
-  const { search, sort } = useSelector(selectSC);
-  const movies = useSelector((state) =>
-    selectVisibleItems(state, { search, sort })
-  );
-
-  const currentPage = useSelector(selectCurrentPage);
-
-  useEffect(() => {
-    dispatch(loadTop250Movie(currentPage));
-  }, [dispatch, currentPage]);
+  const [movies, { status, error }] = useTop250Movies();
 
   return (
     <>

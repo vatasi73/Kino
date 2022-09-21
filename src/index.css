@@ -55,8 +55,8 @@ nav {
   padding: 0 5rem;
 }
 span {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .details {
@@ -156,4 +156,11 @@ span {
 }
 .favorites:hover {
   opacity: 0.8;
+}
+
+.favorites_null_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 }

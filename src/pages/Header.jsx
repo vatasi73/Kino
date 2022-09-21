@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setClear } from "../store/search/searchAction";
+import { useCleanUp } from "../component/features/controls/use-cleanUp";
 
 export default function Header() {
-  const dispatch = useDispatch();
-  const cleanUP = () => dispatch(setClear());
+  const cleanUP = useCleanUp();
   return (
     <>
       <nav>
