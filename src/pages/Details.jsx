@@ -1,33 +1,17 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux/es/exports";
-import { useParams } from "react-router-dom";
+import React from "react";
 
 import SimilarMovie from "../component/features/details/similar/SimilarMovie";
 import ErrorMsg from "../component/ErrorMsg";
-
-import { selectMovieInfo } from "../store/top250Movie/top250MovieSelector";
-import {
-  selectCurrentMovie,
-  setMovieById,
-} from "../component/features/details/details-slice";
-
-import { loadSimilarMovie } from "../store/similar/similarAction";
-import { selectSimilarMovie } from "../store/similar/similarSelector";
+import { useDetails } from "../component/features/details/use-details";
+import { useSimilar } from "../component/features/details/similar/use-similar";
+import { useTop250Movies } from "../component/features/top250movie/use-top250movie";
+import { selectMovieInfo } from "../component/features/top250movie/top250movie-slice";
+import { useSelector } from "react-redux";
 
 export default function Details() {
-  const { id } = useParams();
-  const dispatch = useDispatch();
-
-  const currentMovie = useSelector(selectCurrentMovie);
-  const similarMovie = useSelector(selectSimilarMovie);
+  const [currentMovie] = useDetails();
+  const [similarMovie] = useSimilar();
   const { error } = useSelector(selectMovieInfo);
-  useEffect(() => {
-    dispatch(loadSimilarMovie(id));
-  }, [id, dispatch]);
-
-  useEffect(() => {
-    dispatch(setMovieById(id));
-  }, [id, dispatch]);
 
   return (
     <>

@@ -6,6 +6,7 @@ import { controlsReducer } from "./component/features/controls/contols-slice";
 import { top250MovieReducer } from "./component/features/top250movie/top250movie-slice";
 import { favoritesReducer } from "./component/features/favorites/favorites-slice";
 import { detailsReducer } from "./component/features/details/details-slice";
+import { SimilarMovieReducer } from "./component/features/details/similar/similar-slice";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     controls: controlsReducer,
     favorites: favoritesReducer,
     movieDetails: detailsReducer,
+    similarMovie: SimilarMovieReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddlware) =>
