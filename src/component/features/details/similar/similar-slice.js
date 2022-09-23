@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const setLoadSimilar = createAsyncThunk(
   "@@similar/load-similar",
-  (filmId, { extra: { client, api } }) => {
+  (filmId, { extra: { client, api }, rejectWithValue }) => {
     return client.get(api.similarFilm(filmId), {
       headers: {
         "X-API-KEY": api.API_KEY,

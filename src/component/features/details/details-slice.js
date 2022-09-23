@@ -2,12 +2,17 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const setLoadMovieById = createAsyncThunk(
   "@@details/load-details",
-  (filmId, { extra: { client, api } }) => {
-    return client.get(api.searchMovieById(filmId), {
-      headers: {
-        "X-API-KEY": api.API_KEY,
-      },
-    });
+  (filmId, { extra: { client, api }, rejectWithValue }) => {
+    try {
+      return client.get(api.searchMovieById(filmId), {
+        headers: {
+          "X-API-KEY": api.API_KEY,
+        },
+      });
+    } catch (error) {
+      if (error instanceof Error) return rejectWithValue(error.massage);
+      return rejectWithValue("Unknown error");
+    }
   }
 );
 
@@ -28,7 +33,7 @@ const setDetailsSlice = createSlice({
     });
     builder.addCase(setLoadMovieById.rejected, (state, action) => {
       state.status = "rejected";
-      state.error = action.payload;
+      state.error = action.payload || "Ошибка сервера";
     });
     builder.addCase(setLoadMovieById.fulfilled, (state, action) => {
       state.status = "received";
@@ -36,7 +41,10 @@ const setDetailsSlice = createSlice({
     });
   },
 });
-
+export const selectDetailsInfo = (state) => ({
+  status: state.movieDetails.status,
+  error: state.movieDetails.error,
+});
 export const detailsReducer = setDetailsSlice.reducer;
 
 export const selectCurrentMovie = (state) => state.movieDetails.currentMovie;

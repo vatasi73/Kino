@@ -1,13 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import { setClear } from "../controls/contols-slice";
 export const setLoadTop250Movie = createAsyncThunk(
   "@@top250movie/load-top250movie",
-  (page, { extra: { client, api } }) => {
-    return client.get(api.top250Movie(page), {
-      headers: {
-        "X-API-KEY": api.API_KEY,
-      },
-    });
+  (page, { extra: { client, api }, rejectWithValue }) => {
+    try {
+      return client.get(api.top250Movie(page), {
+        headers: {
+          "X-API-KEY": api.API_KEY,
+        },
+      });
+    } catch (error) {
+      if (error instanceof Error) return rejectWithValue(error.massage);
+      return rejectWithValue("Unknown error");
+    }
   }
 );
 
@@ -34,7 +40,7 @@ const top250movieslice = createSlice({
     });
     builder.addCase(setLoadTop250Movie.rejected, (state, action) => {
       state.status = "rejected";
-      state.error = action.payload || action.meta.error;
+      state.error = action.payload || "Ошибка сервера";
     });
 
     builder.addCase(setLoadTop250Movie.fulfilled, (state, action) => {
