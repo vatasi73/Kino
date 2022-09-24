@@ -5,16 +5,17 @@ import ErrorMsg from "../component/ErrorMsg";
 import { useDetails } from "../component/features/details/use-details";
 import { useSimilar } from "../component/features/details/similar/use-similar";
 
-import { selectMovieInfo } from "../component/features/details/details-slice";
-import { useSelector } from "react-redux";
 import Loading from "../component/Loading";
+import FavoritesAddToggle from "../component/features/favorites/FavoritesAddToggle";
+import FavoritesLink from "../component/features/favorites/FavoritesLink";
 
-export default function Details() {
+export default function Details(item) {
   const [currentMovie, error, status] = useDetails();
   const [similarMovie] = useSimilar();
 
   return (
     <>
+      <FavoritesLink key={item.filmId} />
       {error ? (
         <ErrorMsg />
       ) : (
@@ -28,6 +29,10 @@ export default function Details() {
                   {currentMovie && (
                     <div className="details_movie">
                       <div className="card details">
+                        <FavoritesAddToggle
+                          key={currentMovie.filmId}
+                          {...currentMovie}
+                        />
                         <div className="card-image details">
                           <img
                             src={currentMovie.posterUrlPreview}

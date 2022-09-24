@@ -35,9 +35,16 @@ const setDetailsSlice = createSlice({
       state.status = "rejected";
       state.error = action.payload || "Ошибка сервера";
     });
-    builder.addCase(setLoadMovieById.fulfilled, (state, action) => {
-      state.status = "received";
-      state.currentMovie = action.payload.data;
+    builder.addCase(setLoadMovieById.fulfilled, (state, { payload }) => {
+      const { data } = payload;
+      if (data) {
+        const currentMovie = {
+          ...data,
+          filmId: data.kinopoiskId,
+        };
+        state.status = "received";
+        state.currentMovie = currentMovie;
+      }
     });
   },
 });

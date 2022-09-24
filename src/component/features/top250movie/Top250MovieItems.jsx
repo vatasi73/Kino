@@ -24,7 +24,9 @@ export default function Top250MovieItems(item) {
         </span>
       </div>
       <div className="card-action">
-        <Link to={`/movie/${filmId}/`}>{nameRu}</Link>
+        <Link className="link" to={`/movie/${filmId}/`}>
+          {nameRu}
+        </Link>
       </div>
     </div>
   );

@@ -27,7 +27,9 @@ dl,
 dd {
   margin: 0;
 }
-
+.link {
+  color: black;
+}
 .card .card-image .card-title {
   border-radius: 10px;
   font-size: 20px;
@@ -125,13 +127,9 @@ span {
 .serch_content {
   display: flex;
   flex-wrap: wrap;
-
   justify-content: space-evenly;
-  margin: 0;
-}
-
-.tets {
-  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
 }
 
 .error_title {
@@ -167,4 +165,14 @@ span {
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+}
+.favorites_link {
+  position: absolute;
+
+  right: 2rem;
+  top: -0.8rem;
+}
+
+.hide-on-med-and-down {
+  display: flex !important;
 }

@@ -18,8 +18,8 @@ export default function Favorites() {
       ) : (
         <div className="items">
           {!!favorites.length &&
-            favorites.map((el) => (
-              <div className="card">
+            favorites.map((el, i) => (
+              <div key={i} className="card">
                 <FavoritesDelete {...el} />
                 <div className="card-image">
                   <img src={el.posterUrlPreview} alt={el.nameRu} />

@@ -1,17 +1,23 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Search from "../component/features/controls/Search";
 import Sort from "../component/features/controls/Sort";
+import FavoritesLink from "../component/features/favorites/FavoritesLink";
+import Loading from "../component/Loading";
 
-import Top250MovieList from "../component/features/top250movie/Top250MovieList";
-
+const Top250MovieList = React.lazy(() =>
+  import("../component/features/top250movie/Top250MovieList")
+);
 export default function HomePage() {
   return (
     <div className="container content">
       <div className="serch_content">
         <Search />
         <Sort />
+        <FavoritesLink />
       </div>
-      <Top250MovieList />
+      <Suspense fallback={<Loading />}>
+        <Top250MovieList />
+      </Suspense>
     </div>
   );
 }

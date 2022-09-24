@@ -8,6 +8,7 @@ export default function FavoritesDelete(movie) {
   const handleDeleteClick = () => {
     dispatch(setDeleteFromFavorites(movie.filmId));
   };
+
   return (
     <div>
       <i

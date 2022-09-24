@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectAddFavorites,
@@ -7,10 +5,13 @@ import {
   setDeleteFromFavorites,
 } from "./favorites-slice";
 
-export default function FavoritesAddToggle(movie) {
+export const useFavorites = (movie) => {
   const dispatch = useDispatch();
+
   const favorites = useSelector(selectAddFavorites);
-  const isFavorit = favorites.find((el) => el.filmId === movie.filmId);
+
+  const isFavorit = favorites.some((el) => el.filmId === movie.filmId);
+
   const handleClick = (e) => {
     e.stopPropagation();
     if (!isFavorit) {
@@ -19,15 +20,10 @@ export default function FavoritesAddToggle(movie) {
       dispatch(setDeleteFromFavorites(movie.filmId));
     }
   };
-  return (
-    <div>
-      <i
-        onClick={handleClick}
-        style={{ color: isFavorit ? "yellow" : "white" }}
-        className="medium material-icons favorites"
-      >
-        turned_in_not
-      </i>
-    </div>
-  );
-}
+
+  const handleDeleteClick = () => {
+    dispatch(setDeleteFromFavorites(movie.filmId));
+  };
+
+  return [favorites, isFavorit, handleClick, handleDeleteClick];
+};

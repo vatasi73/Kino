@@ -11,14 +11,6 @@ export default function Header() {
           <Link onClick={cleanUP} to="/" className="brand-logo">
             Kino
           </Link>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li>
-              <Link to={`/favorites`}>Избранное</Link>
-            </li>
-            <li>
-              <a href="collapsible.html">JavaScript</a>
-            </li>
-          </ul>
         </div>
       </nav>
     </>

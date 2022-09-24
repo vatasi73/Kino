@@ -4,6 +4,12 @@ import Select from "react-select";
 import { useSort } from "./use-sort";
 
 export default function Sort() {
+  const customStyles = {
+    control: (styles) => ({
+      ...styles,
+      height: 55,
+    }),
+  };
   const optionsMap = {
     драма: {
       value: "драма",
@@ -47,6 +53,7 @@ export default function Sort() {
     <>
       {" "}
       <Select
+        styles={customStyles}
         options={options}
         placeholder="Выбрать жанр"
         isClearable
