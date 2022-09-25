@@ -6,24 +6,15 @@ import {
   setAddFavorites,
   setDeleteFromFavorites,
 } from "./favorites-slice";
+import { useFavorites } from "./use-favorites";
 
 export default function FavoritesAddToggle(movie) {
-  const dispatch = useDispatch();
-  const favorites = useSelector(selectAddFavorites);
-  const isFavorit = favorites.find((el) => el.filmId === movie.filmId);
-  const handleClick = (e) => {
-    e.stopPropagation();
-    if (!isFavorit) {
-      dispatch(setAddFavorites(movie));
-    } else {
-      dispatch(setDeleteFromFavorites(movie.filmId));
-    }
-  };
+  const { handleClick, onFavorite } = useFavorites(movie);
   return (
     <div>
       <i
         onClick={handleClick}
-        style={{ color: isFavorit ? "yellow" : "white" }}
+        style={{ color: onFavorite ? "yellow" : "white" }}
         className="medium material-icons favorites"
       >
         turned_in_not

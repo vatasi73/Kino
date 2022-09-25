@@ -10,3 +10,7 @@ export const similarFilm = (
   filmId
 ) => `https://kinopoiskapiunofficial.tech/api/v2.2/films/${filmId}/similars
   `;
+export const searchMovieByKeyWord = (keyword) =>
+  `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${encodeURI(
+    keyword
+  )}`;

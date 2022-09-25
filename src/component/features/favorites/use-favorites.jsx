@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectAddFavorites,
@@ -7,23 +8,34 @@ import {
 
 export const useFavorites = (movie) => {
   const dispatch = useDispatch();
-
   const favorites = useSelector(selectAddFavorites);
+  const [onFavorite, setOnFavorite] = useState(0);
 
-  const isFavorit = favorites.some((el) => el.filmId === movie.filmId);
+  useEffect(() => {
+    if (movie) {
+      setOnFavorite(
+        favorites.filter((el) => el.filmId === movie.filmId).length
+      );
+    }
+  }, [favorites, movie]);
 
   const handleClick = (e) => {
     e.stopPropagation();
-    if (!isFavorit) {
-      dispatch(setAddFavorites(movie));
-    } else {
+    if (onFavorite) {
       dispatch(setDeleteFromFavorites(movie.filmId));
+    } else {
+      dispatch(setAddFavorites(movie));
     }
   };
 
-  const handleDeleteClick = () => {
+  const deleteFromFavorites = () => {
     dispatch(setDeleteFromFavorites(movie.filmId));
   };
 
-  return [favorites, isFavorit, handleClick, handleDeleteClick];
+  return {
+    favorites,
+    onFavorite,
+    handleClick,
+    deleteFilm: deleteFromFavorites,
+  };
 };

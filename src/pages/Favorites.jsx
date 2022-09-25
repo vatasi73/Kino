@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import FavoritesDelete from "../component/features/favorites/FavoritesDelete";
 
 import { selectAddFavorites } from "../component/features/favorites/favorites-slice";
+import { useFavorites } from "../component/features/favorites/use-favorites";
 
-export default function Favorites() {
-  const favorites = useSelector(selectAddFavorites);
-
+export default function Favorites(movie) {
+  const { favorites } = useFavorites(movie);
   return (
     <div className="container content">
       {!favorites.length ? (
