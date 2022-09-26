@@ -1,11 +1,5 @@
 import React from "react";
-
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectAddFavorites,
-  setAddFavorites,
-  setDeleteFromFavorites,
-} from "./favorites-slice";
+import { motion } from "framer-motion";
 import { useFavorites } from "./use-favorites";
 
 export default function FavoritesAddToggle(movie) {

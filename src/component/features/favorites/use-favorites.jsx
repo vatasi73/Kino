@@ -20,7 +20,6 @@ export const useFavorites = (movie) => {
   }, [favorites, movie]);
 
   const handleClick = (e) => {
-    e.stopPropagation();
     if (onFavorite) {
       dispatch(setDeleteFromFavorites(movie.filmId));
     } else {

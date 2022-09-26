@@ -1,14 +1,15 @@
 import React from "react";
-
-import SimilarMovie from "../component/features/details/similar/SimilarMovie";
-import ErrorMsg from "../component/ErrorMsg";
+import { motion } from "framer-motion";
 import { useDetails } from "../component/features/details/use-details";
 import { useSimilar } from "../component/features/details/similar/use-similar";
 
+import SimilarMovie from "../component/features/details/similar/SimilarMovie";
+import ErrorMsg from "../component/ErrorMsg";
 import Loading from "../component/Loading";
 import FavoritesAddToggle from "../component/features/favorites/FavoritesAddToggle";
 import FavoritesLink from "../component/features/favorites/FavoritesLink";
 
+import { detailsVariant, itemsVariant } from "../component/animation";
 export default function Details(item) {
   const [currentMovie, error, status] = useDetails();
   const [similarMovie] = useSimilar();
@@ -25,7 +26,12 @@ export default function Details(item) {
           ) : (
             <>
               {status === "received" && (
-                <div className="container content animation">
+                <motion.div
+                  variants={detailsVariant}
+                  initial="hidden"
+                  animate="visible"
+                  className="container content"
+                >
                   {currentMovie && (
                     <div className="details_movie">
                       <div className="card details">
@@ -43,13 +49,13 @@ export default function Details(item) {
                             {currentMovie.ratingKinopoisk}
                           </span>
                         </div>
-                        <div className="details_title">
-                          <h5>{currentMovie.nameRu}</h5>
-                        </div>
                       </div>
 
                       <div>
                         <div className="card-content black-text details_description ">
+                          <h5 className="details_movie_name">
+                            {currentMovie.nameRu}
+                          </h5>
                           <span>Описание:</span>
                           <p> {currentMovie.description}</p>
                           <span>Цитата:</span>
@@ -71,11 +77,20 @@ export default function Details(item) {
                   )}
                   <span>Похожие фильмы:</span>
                   <div className="similar_items">
-                    {similarMovie.map((el) => (
-                      <SimilarMovie key={el.filmId} {...el} />
+                    {similarMovie.map((el, i) => (
+                      <motion.div
+                        variants={itemsVariant}
+                        initial="hidden"
+                        animate="visible"
+                        whileHover={{ scale: 1.1 }}
+                        custom={i}
+                      >
+                        {" "}
+                        <SimilarMovie key={el.filmId} {...el} />
+                      </motion.div>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               )}
             </>
           )}

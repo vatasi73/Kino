@@ -30,6 +30,10 @@ dd {
 .link {
   color: black;
 }
+.medium_img {
+  max-height: 27rem;
+  object-fit: cover;
+}
 .card .card-image .card-title {
   border-radius: 10px;
   font-size: 20px;
@@ -39,10 +43,20 @@ dd {
   left: 15px;
   padding: 6px;
 }
-
+.card-content {
+  color: rgb(239 219 219 / 91%);
+  box-sizing: content-box;
+  padding: 10px;
+  background: rgb(0 0 0 / 70%);
+}
+.film_name {
+  font-size: 16px;
+  font-weight: 700;
+}
 .items {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1.5fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 20rem));
+  justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -61,6 +75,16 @@ span {
   font-size: 15px;
   font-weight: 600;
 }
+.card-action {
+  display: grid;
+  grid-template-rows: auto;
+  align-items: flex-end;
+}
+.top250_title_content {
+  min-height: 8rem;
+  text-align: center;
+}
+
 .pagination li.active {
   background-color: rgb(0 0 0 / 70%);
 }
@@ -82,7 +106,10 @@ span {
   justify-content: center;
   align-items: center;
 }
-
+.details_movie_name {
+  color: rgb(0 0 0 / 70%);
+  font-weight: 700;
+}
 .similar_items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -93,7 +120,6 @@ span {
 .similar_title {
   display: flex;
   justify-content: center;
-
   padding: 5px;
 }
 
@@ -110,26 +136,15 @@ span {
   margin-top: 2rem;
 }
 
-.animation {
-  opacity: 0;
-  animation: ani 2.5s forwards;
-}
-
-@keyframes ani {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .serch_content {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
   margin-left: 2rem;
+}
+.sort {
+  z-index: 1000;
 }
 
 .error_title {
@@ -155,9 +170,10 @@ span {
   cursor: pointer;
   transition: color 500ms ease;
   background: none;
+  transition: 1s;
 }
 .favorites:hover {
-  opacity: 0.8;
+  transform: scale(1.2);
 }
 
 .favorites_null_title {
@@ -168,7 +184,6 @@ span {
 }
 .favorites_link {
   position: absolute;
-
   right: 2rem;
   top: -0.8rem;
 }

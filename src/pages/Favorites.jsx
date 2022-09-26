@@ -1,11 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import FavoritesDelete from "../component/features/favorites/FavoritesDelete";
 
-import { selectAddFavorites } from "../component/features/favorites/favorites-slice";
 import { useFavorites } from "../component/features/favorites/use-favorites";
+import { itemsVariant } from "../component/animation";
 
 export default function Favorites(movie) {
   const { favorites } = useFavorites(movie);
@@ -19,28 +19,35 @@ export default function Favorites(movie) {
         <div className="items">
           {!!favorites.length &&
             favorites.map((el, i) => (
-              <div key={i} className="card">
+              <motion.div
+                variants={itemsVariant}
+                initial="hidden"
+                animate="visible"
+                whileHover={{ scale: 1.1 }}
+                custom={i}
+                key={i}
+                className="card"
+              >
                 <FavoritesDelete {...el} />
-                <div className="card-image">
-                  <img src={el.posterUrlPreview} alt={el.nameRu} />
-                  <span className="card-title white-text green ">
-                    {el.rating}
-                  </span>
-                </div>
-                <div className="card-content">
-                  <span>{el.year}, </span>
-                  <span>
-                    {el.genres.map((el) => (
-                      <span key={el.genre}>
-                        <span>{el.genre} </span>
-                      </span>
-                    ))}
-                  </span>
-                </div>
-                <div className="card-action">
-                  <Link to={`/movie/${el.filmId}/`}>{el.nameRu}</Link>
-                </div>
-              </div>
+                <Link className="link" to={`/movie/${el.filmId}/`}>
+                  <div className="card-image">
+                    <img src={el.posterUrlPreview} alt={el.nameRu} />
+                    <span className="card-title white-text green ">
+                      {el.rating}
+                    </span>
+                  </div>
+                  <div className="card-content">
+                    <span>{el.year}, </span>
+                    <span>
+                      {el.genres.map((el) => (
+                        <span key={el.genre}>
+                          <span>{el.genre} </span>
+                        </span>
+                      ))}
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
             ))}
         </div>
       )}

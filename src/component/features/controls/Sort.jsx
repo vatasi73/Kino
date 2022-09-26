@@ -50,7 +50,7 @@ export default function Sort() {
   const [sort, handleSort] = useSort();
 
   return (
-    <>
+    <div className="sort">
       {" "}
       <Select
         styles={customStyles}
@@ -61,6 +61,6 @@ export default function Sort() {
         value={optionsMap[sort] || ""}
         onChange={handleSort}
       />
-    </>
+    </div>
   );
 }
