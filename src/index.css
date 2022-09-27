@@ -132,6 +132,7 @@ span {
 }
 .details_description {
   background: none;
+  padding-left: 8px;
 }
 .similar_span_in_details {
   display: flex;
