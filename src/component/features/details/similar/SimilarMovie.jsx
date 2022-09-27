@@ -6,7 +6,7 @@ export default function SimilarMovie(el) {
     <div className="card similar animation">
       <Link to={`/movie/${filmId}/`} className="link">
         <div className="card-image">
-          <img src={posterUrl} alt={nameRu} />
+          <img className="similar_img" src={posterUrl} alt={nameRu} />
         </div>
         <h6 className="similar_title">{nameRu}</h6>
       </Link>

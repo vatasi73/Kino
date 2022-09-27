@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import Search from "../component/features/controls/Search";
 import Sort from "../component/features/controls/Sort";
-import FavoritesLink from "../component/features/favorites/FavoritesLink";
+
 import Loading from "../component/Loading";
 
 const Top250MovieList = React.lazy(() =>
@@ -13,7 +13,6 @@ export default function HomePage() {
       <div className="serch_content">
         <Search />
         <Sort />
-        <FavoritesLink />
       </div>
       <Suspense fallback={<Loading />}>
         <Top250MovieList />

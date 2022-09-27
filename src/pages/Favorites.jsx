@@ -18,26 +18,31 @@ export default function Favorites(movie) {
       ) : (
         <div className="items">
           {!!favorites.length &&
-            favorites.map((el, i) => (
+            favorites.map((el) => (
               <motion.div
                 variants={itemsVariant}
                 initial="hidden"
                 animate="visible"
+                exit="exit"
                 whileHover={{ scale: 1.1 }}
-                custom={i}
-                key={i}
+                key={el.filmId}
                 className="card"
               >
                 <FavoritesDelete {...el} />
                 <Link className="link" to={`/movie/${el.filmId}/`}>
                   <div className="card-image">
-                    <img src={el.posterUrlPreview} alt={el.nameRu} />
+                    <img
+                      className="medium_img"
+                      src={el.posterUrlPreview}
+                      alt={el.nameRu}
+                    />
                     <span className="card-title white-text green ">
                       {el.rating}
                     </span>
                   </div>
-                  <div className="card-content">
-                    <span>{el.year}, </span>
+                  <div className="card-content top250_title_content">
+                    <h5 className="film_name">{el.nameRu} </h5>
+                    <span> {el.year}, </span>
                     <span>
                       {el.genres.map((el) => (
                         <span key={el.genre}>

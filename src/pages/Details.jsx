@@ -52,7 +52,7 @@ export default function Details(item) {
                       </div>
 
                       <div>
-                        <div className="card-content black-text details_description ">
+                        <div className="card-content black-text details_description">
                           <h5 className="details_movie_name">
                             {currentMovie.nameRu}
                           </h5>
@@ -75,7 +75,9 @@ export default function Details(item) {
                       </div>
                     </div>
                   )}
-                  <span>Похожие фильмы:</span>
+                  <span className="similar_span_in_details">
+                    Похожие фильмы:
+                  </span>
                   <div className="similar_items">
                     {similarMovie.map((el, i) => (
                       <motion.div
