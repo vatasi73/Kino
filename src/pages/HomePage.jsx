@@ -9,14 +9,16 @@ const Top250MovieList = React.lazy(() =>
 );
 export default function HomePage() {
   return (
-    <div className="container content">
-      <div className="serch_content">
-        <Search />
-        <Sort />
+    <main>
+      <div className="container content">
+        <div className="serch_content">
+          <Search />
+          <Sort />
+        </div>
+        <Suspense fallback={<Loading />}>
+          <Top250MovieList />
+        </Suspense>
       </div>
-      <Suspense fallback={<Loading />}>
-        <Top250MovieList />
-      </Suspense>
-    </div>
+    </main>
   );
 }
