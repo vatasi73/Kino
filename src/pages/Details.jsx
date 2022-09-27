@@ -16,7 +16,6 @@ export default function Details(item) {
 
   return (
     <>
-      <FavoritesLink key={item.filmId} />
       {error ? (
         <ErrorMsg />
       ) : (
