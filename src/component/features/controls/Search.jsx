@@ -7,7 +7,7 @@ export default function Search() {
     <div className="input-field">
       <input
         className="validate"
-        placeholder="Поиск"
+        placeholder="Поиск по странице..."
         type="search"
         onChange={handleSearch}
         value={search}
